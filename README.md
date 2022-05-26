@@ -1,6 +1,6 @@
 # GDS-ARM: Factor selection in screening experiments by aggregation over random models
 
-<img src="_images/" width="350px" align="right" style="padding-left:10px;background-color:white;" />
+<img src="GDSARM_inpicture" width="350px" align="right" style="padding-left:10px;background-color:white;" />
 
 #### *Rakhi Singh, agrakhi@gmail.com*
 #### *John Stufken, jstufken@uncg.edu*
@@ -15,7 +15,7 @@ considering main-effects models can result in erroneous conclusions, but includi
 teraction terms, even if restricted to two-factor interactions, increases the number of
 model terms dramatically and challenges the GDS analysis. We propose a new analysis method, 
 called Gauss-Dantzig Selector Aggregation over Random Models (***GDS-ARM***), which performs a GDS analysis on multiple models that include only some
-randomly selected interactions. Please see [Singh and tufken (2022)]() for more details.
+randomly selected interactions. Please see [Singh and Stufken (2022)]() for more details.
 
 ## Development status
 
