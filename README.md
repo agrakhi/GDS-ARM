@@ -1,6 +1,6 @@
 # GDS-ARM: Factor selection in screening experiments by aggregation over random models
 
-<img src="GDSARM_inpictureCropped.PNG" width="350px" align="right" style="padding-left:10px;background-color:white;" />
+<img src="GDSARM_logo_v1.jfif" width="350px" align="right" style="padding-left:10px;background-color:white;" />
 
 #### *Rakhi Singh, agrakhi@gmail.com*
 #### *John Stufken, jstufken@uncg.edu*
