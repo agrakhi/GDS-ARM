@@ -23,6 +23,7 @@ This package is currently in the submission to CRAN. The programs are in stable 
 
 ## Installation
 
+(yet to come in the next week)
 Most stable version pushed to CRAN can be installed directly from CRAN:
 
 ```{r}
