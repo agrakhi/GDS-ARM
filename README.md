@@ -40,7 +40,7 @@ remotes::install_github("agrakhi/GDSARM")
 
 ### Bug reports
 
-Please submit any bugs or issues (or suggestions) using the [issues](https://github.com/agrakhi/GDSARM/issues) tab of the repo.
+Please submit any bugs or issues (or suggestions) using the [issues](https://github.com/agrakhi/GDS-ARM/issues) tab of the repo.
 
 ## Usage
 
