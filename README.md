@@ -10,6 +10,8 @@
 [![CRAN Status](https://www.r-pkg.org/badges/version/GDSARM)](https://cran.r-project.org/package=GDSARM)
 [![R-CMD-check](https://github.com/agrakhi/GDSARM/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/agrakhi/GDSARM/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/agrakhi/GDSARM/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/agrakhi/GDSARM/actions/workflows/pkgdown.yaml)
+[![R](https://github.com/agrakhi/GDSARM/actions/workflows/r.yml/badge.svg)](https://github.com/agrakhi/GDSARM/actions/workflows/r.yml)
+
 <!-- badges: end -->
 
 Screening experiments are useful for screening out a small number of truly impor-
