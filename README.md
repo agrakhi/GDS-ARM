@@ -1,4 +1,4 @@
-# GDS-ARM: Factor selection in screening experiments by aggregation over random models
+# Gauss - Dantzig Selector: Aggregation over random models (GDS-ARM)
 
 <img src="GDSARM_logo_v1.jfif" width="350px" align="right" style="padding-left:10px;background-color:white;" />
 
