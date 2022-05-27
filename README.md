@@ -12,7 +12,6 @@
 [![pkgdown](https://github.com/agrakhi/GDSARM/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/agrakhi/GDSARM/actions/workflows/pkgdown.yaml)
 [![R](https://github.com/agrakhi/GDSARM/actions/workflows/r.yml/badge.svg)](https://github.com/agrakhi/GDSARM/actions/workflows/r.yml)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/0o2rg3h22bbb4yt7/branch/main?svg=true)](https://ci.appveyor.com/project/agrakhi/GDSARM/branch/main)
-
 [![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/GDSARM)](https://cranlogs.r-pkg.org/badges/grand-total/GDSARM)
 
 <!-- badges: end -->
