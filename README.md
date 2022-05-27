@@ -15,7 +15,7 @@ considering main-effects models can result in erroneous conclusions, but includi
 teraction terms, even if restricted to two-factor interactions, increases the number of
 model terms dramatically and challenges the GDS analysis. We propose a new analysis method, 
 called Gauss-Dantzig Selector Aggregation over Random Models (***GDS-ARM***), which performs a GDS analysis on multiple models that include only some
-randomly selected interactions. Please see [Singh and Stufken (2022)]() for more details.
+randomly selected interactions. Please see [Singh and Stufken (2022)](https://arxiv.org/abs/2205.13497) for more details.
 
 ## Development status
 
@@ -89,4 +89,4 @@ This package is released in the public domain under the General Public License [
 
 ## References
 
-Singh, R. and Stufken, J. (2022). Factor selection in screening experiments by aggregation over random models, 1--31. doi: [](https://doi.org/10.1016/j.cor.2018.06.007).
+Singh, R. and Stufken, J. (2022). Factor selection in screening experiments by aggregation over random models, 1--31. [Link] (https://doi.org/10.1016/j.cor.2018.06.007).
