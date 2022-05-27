@@ -24,7 +24,7 @@ This package is currently in the submission to CRAN. The programs are in stable 
 ## Installation
 
 (yet to come in the next week)
-Most stable version pushed to CRAN can be installed directly from CRAN:
+Most stable version will be pushed to CRAN and can be installed directly from CRAN in a week's time:
 
 ```{r}
 install.packages("GDSARM")
@@ -40,7 +40,7 @@ remotes::install_github("agrakhi/GDSARM")
 
 ### Bug reports
 
-Please submit any bugs or issues (or suggestions) using the [issues](https://github.com/agrakhi/GDS-ARM/issues) tab of the repo.
+Please submit any bugs or issues (or suggestions) using the [issues](https://github.com/agrakhi/GDSARM/issues) tab of the repo.
 
 ## Usage
 
@@ -89,4 +89,4 @@ This package is released in the public domain under the General Public License [
 
 ## References
 
-Singh, R. and Stufken, J. (2022). Factor selection in screening experiments by aggregation over random models, 1--31. [Link] (https://doi.org/10.1016/j.cor.2018.06.007).
+Singh, R. and Stufken, J. (2022). Factor selection in screening experiments by aggregation over random models, 1--31. https://arxiv.org/abs/2205.13497
