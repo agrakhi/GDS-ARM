@@ -87,18 +87,18 @@ after the stepwise stage of GDS-ARM.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">GDSARM</span><span class="op">(</span>
-  delta.n <span class="op">=</span> <span class="fl">10</span>,
-  <span class="va">nint</span>,
-  <span class="va">nrep</span>,
-  <span class="va">ntop</span>,
-  <span class="va">pkeep</span>,
-  <span class="va">design</span>,
-  <span class="va">Y</span>,
-  cri.penter <span class="op">=</span> <span class="fl">0.01</span>,
-  cri.premove <span class="op">=</span> <span class="fl">0.05</span>,
-  opt.heredity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">GDSARM</span><span class="op">(</span></span>
+<span>  delta.n <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  <span class="va">nint</span>,</span>
+<span>  <span class="va">nrep</span>,</span>
+<span>  <span class="va">ntop</span>,</span>
+<span>  <span class="va">pkeep</span>,</span>
+<span>  <span class="va">design</span>,</span>
+<span>  <span class="va">Y</span>,</span>
+<span>  cri.penter <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span>  cri.premove <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  opt.heredity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -125,40 +125,61 @@ by aggregation over random models, 1--31. <a href="https://arxiv.org/abs/2205.13
 <dd><p>a positive integer suggesting the number of delta values
 to be tried. <code>delta.n</code> values of <code>delta</code> will be used
 strictly between 0 and <code>max(t(X)y)</code>. The default value is set to 10.</p></dd>
+
+
 <dt>nint</dt>
 <dd><p>a positive integer representing the number of randomly
 chosen interactions. The suggested value to use is the ceiling of 20%
 of the total number of interactions, that is, for <code>m</code> factors, we have
 <code>ceiling(0.2(m choose 2))</code>.</p></dd>
+
+
 <dt>nrep</dt>
 <dd><p>a positive integer representing the number of times GDS should
 be run. The suggested value is <code>(m choose 2)</code>.</p></dd>
+
+
 <dt>ntop</dt>
 <dd><p>a positive integer representing the number of top models
 to be selected among the <code>nrep</code> models. The suggested value is
 <code>max(20, (nrep x nint)/(m(m-1))</code>.</p></dd>
+
+
 <dt>pkeep</dt>
 <dd><p>a number between 0 and 1 representing the proportion of <code>ntop</code>
 models in which an effect needs to appear in order to be declared active.</p></dd>
+
+
 <dt>design</dt>
 <dd><p>a \(n \times m\) matrix of <code>m</code> two-level main effects.
 The columns should have the high-level coded as +1 and the low-level codes as -1.</p></dd>
+
+
 <dt>Y</dt>
 <dd><p>a vector of <code>n</code> responses.</p></dd>
+
+
 <dt>cri.penter</dt>
 <dd><p>the p-value cutoff for an effect to enter into the
 stepwise regression model. The suggested value is 0.01.</p></dd>
+
+
 <dt>cri.premove</dt>
 <dd><p>the p-value cutoff for an effect to exit from the
 stepwise regression model. The suggested value is 0.05.</p></dd>
+
+
 <dt>opt.heredity</dt>
 <dd><p>a string with either <code>none</code>, or <code>weak</code>, or <code>strong</code>. Denotes
 whether the effect-heredity (weak or strong) should be embedded in GDS-ARM.
 The default value is <code>none</code> as suggested in Singh and Stufken (2022).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list returning the effects identified as active as well as the
+    
+
+<p>A list returning the effects identified as active as well as the
 corresponding identified important factors.</p>
     </div>
     <div id="see-also">
@@ -168,72 +189,72 @@ corresponding identified important factors.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">m</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">nint</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">nrep</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ntop</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">20</span>, <span class="va">nint</span><span class="op">*</span><span class="va">nrep</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pkeep</span> <span class="op">=</span> <span class="fl">0.25</span> </span>
-<span class="r-in"><span class="va">cri.penter</span> <span class="op">=</span> <span class="fl">0.01</span></span>
-<span class="r-in"><span class="va">cri.premove</span> <span class="op">=</span> <span class="fl">0.05</span></span>
-<span class="r-in"><span class="va">design</span> <span class="op">=</span> <span class="va">X</span></span>
-<span class="r-in"><span class="co"># GDS-ARM with default values</span></span>
-<span class="r-in"><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>, <span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">m</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">nint</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nrep</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ntop</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">20</span>, <span class="va">nint</span><span class="op">*</span><span class="va">nrep</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pkeep</span> <span class="op">=</span> <span class="fl">0.25</span> </span></span>
+<span class="r-in"><span><span class="va">cri.penter</span> <span class="op">=</span> <span class="fl">0.01</span></span></span>
+<span class="r-in"><span><span class="va">cri.premove</span> <span class="op">=</span> <span class="fl">0.05</span></span></span>
+<span class="r-in"><span><span class="va">design</span> <span class="op">=</span> <span class="va">X</span></span></span>
+<span class="r-in"><span><span class="co"># GDS-ARM with default values</span></span></span>
+<span class="r-in"><span><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>, <span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6"    "V1:V5" "V6:V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6" "V1" "V5" "V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># GDS-ARM with default values but with weak heredity</span></span>
-<span class="r-in"><span class="va">opt.heredity</span><span class="op">=</span><span class="st">"weak"</span> </span>
-<span class="r-in"><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span>,<span class="va">opt.heredity</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># GDS-ARM with default values but with weak heredity</span></span></span>
+<span class="r-in"><span><span class="va">opt.heredity</span><span class="op">=</span><span class="st">"weak"</span> </span></span>
+<span class="r-in"><span><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span>,<span class="va">opt.heredity</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6"    "V6:V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6" "V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataCompoundExt</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="op">-</span><span class="fl">9</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">Y</span><span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="fl">9</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">m</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">nint</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">nrep</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ntop</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">20</span>, <span class="va">nint</span><span class="op">*</span><span class="va">nrep</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">pkeep</span> <span class="op">=</span> <span class="fl">0.25</span> </span>
-<span class="r-in"><span class="va">cri.penter</span> <span class="op">=</span> <span class="fl">0.01</span></span>
-<span class="r-in"><span class="va">cri.premove</span> <span class="op">=</span> <span class="fl">0.05</span></span>
-<span class="r-in"><span class="va">design</span> <span class="op">=</span> <span class="va">X</span></span>
-<span class="r-in"><span class="co"># GDS-ARM on compound extraction</span></span>
-<span class="r-in"><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataCompoundExt</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="op">-</span><span class="fl">9</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">Y</span><span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="fl">9</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">m</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">nint</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nrep</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ntop</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">20</span>, <span class="va">nint</span><span class="op">*</span><span class="va">nrep</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Special.html" class="external-link">choose</a></span><span class="op">(</span><span class="va">m</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pkeep</span> <span class="op">=</span> <span class="fl">0.25</span> </span></span>
+<span class="r-in"><span><span class="va">cri.penter</span> <span class="op">=</span> <span class="fl">0.01</span></span></span>
+<span class="r-in"><span><span class="va">cri.premove</span> <span class="op">=</span> <span class="fl">0.05</span></span></span>
+<span class="r-in"><span><span class="va">design</span> <span class="op">=</span> <span class="va">X</span></span></span>
+<span class="r-in"><span><span class="co"># GDS-ARM on compound extraction</span></span></span>
+<span class="r-in"><span><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V4"    "V3"    "V1:V4"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V4" "V3" "V1"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># GDS-ARM on compound extraction with strong heredity</span></span>
-<span class="r-in"><span class="va">opt.heredity</span><span class="op">=</span><span class="st">"strong"</span></span>
-<span class="r-in"><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span>,<span class="va">opt.heredity</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># GDS-ARM on compound extraction with strong heredity</span></span></span>
+<span class="r-in"><span><span class="va">opt.heredity</span><span class="op">=</span><span class="st">"strong"</span></span></span>
+<span class="r-in"><span><span class="fu">GDSARM</span><span class="op">(</span><span class="va">delta.n</span>,<span class="va">nint</span>, <span class="va">nrep</span>, <span class="va">ntop</span>,<span class="va">pkeep</span>, <span class="va">X</span>,<span class="va">Y</span>,<span class="va">cri.penter</span>, <span class="va">cri.premove</span>,<span class="va">opt.heredity</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V4" "V3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V4" "V3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -248,7 +269,7 @@ corresponding identified important factors.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

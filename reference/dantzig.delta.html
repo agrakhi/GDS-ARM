@@ -59,7 +59,7 @@ that <code>max(t(X)(y-X * beta)) &lt;= delta</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dantzig.delta</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, <span class="va">delta</span>, plot <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dantzig.delta</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, <span class="va">delta</span>, plot <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -74,18 +74,27 @@ designs via the Dantzig selector. Journal of Statistical Planning and Inference
     <h2>Arguments</h2>
     <dl><dt>X</dt>
 <dd><p>a design matrix.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>a vector of  responses.</p></dd>
+
+
 <dt>delta</dt>
 <dd><p>the specific value of <code>delta</code> for which the DS
 optimization needs to be solved</p></dd>
+
+
 <dt>plot</dt>
 <dd><p>a boolean value of either TRUE or FALSE with TRUE
 indicating that the profile plot should be drawn.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A matrix of the estimated values of <code>beta</code> with each
+    
+
+<p>A matrix of the estimated values of <code>beta</code> with each
 row corresponding to a particular value of <code>delta</code>.</p>
     </div>
     <div id="see-also">
@@ -95,15 +104,15 @@ row corresponding to a particular value of <code>delta</code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="co">#scale and center X and y</span></span>
-<span class="r-in"><span class="va">scaleX</span> <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">X</span>, center<span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">scaleY</span> <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">Y</span>, center<span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">maxDelta</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">scaleX</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">scaleY</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Dantzig Selector on 4 delta values equi spaced between 0 and maxDelta</span></span>
-<span class="r-in"><span class="fu">dantzig.delta</span><span class="op">(</span><span class="va">scaleX</span>, <span class="va">scaleY</span>, delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">maxDelta</span>,length.out<span class="op">=</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="co">#scale and center X and y</span></span></span>
+<span class="r-in"><span><span class="va">scaleX</span> <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">X</span>, center<span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">scaleY</span> <span class="op">=</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">Y</span>, center<span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">maxDelta</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">scaleX</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">scaleY</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Dantzig Selector on 4 delta values equi spaced between 0 and maxDelta</span></span></span>
+<span class="r-in"><span><span class="fu">dantzig.delta</span><span class="op">(</span><span class="va">scaleX</span>, <span class="va">scaleY</span>, delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">maxDelta</span>,length.out<span class="op">=</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          V1        V2         V3         V4         V5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0                0.17016091 0.1534495 -0.1283823 -0.2695593 0.07824791</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.75241074956335 0.01085084 0.0000000  0.0000000 -0.1102492 0.00000000</span>
@@ -114,7 +123,7 @@ row corresponding to a particular value of <code>delta</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.75241074956335 0.3186201 0.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3.5048214991267  0.1593101 0.00000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5.25723224869005 0.0000000 0.00000000</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -129,7 +138,7 @@ row corresponding to a particular value of <code>delta</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

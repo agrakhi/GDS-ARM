@@ -65,7 +65,7 @@ clusters and BIC to select a best model  for all the <code>delta</code> values.<
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">GDS_givencols</span><span class="op">(</span>delta.n <span class="op">=</span> <span class="fl">10</span>, <span class="va">design</span>, <span class="va">Y</span>, which.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"main2fi"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">GDS_givencols</span><span class="op">(</span>delta.n <span class="op">=</span> <span class="fl">10</span>, <span class="va">design</span>, <span class="va">Y</span>, which.cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"main2fi"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -93,20 +93,29 @@ by aggregation over random models, 1--31. <a href="https://arxiv.org/abs/2205.13
 to be tried. <code>delta.n</code> values of <code>delta</code> will be used
 strictly between 0 and <code>max(t(X)y)</code>. The default value is
 set to 10.</p></dd>
+
+
 <dt>design</dt>
 <dd><p>a \(n \times m\) matrix of <code>m</code> two-level main effects.
 The columns should have the high-level coded as +1 and the low-level codes as -1.</p></dd>
+
+
 <dt>Y</dt>
 <dd><p>a vector of <code>n</code> responses.</p></dd>
+
+
 <dt>which.cols</dt>
 <dd><p>a string with either <code>main</code> or <code>main2fi</code>. Denotes
 whether the Gauss-Dantzig Selector should be run on the main effect columns (<code>main</code>), or on
 all main effects plus all 2 factor interaction columns (<code>main2fi</code>).
 The default value is <code>main2fi</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list returning the effects identified as active as well as the
+    
+
+<p>A list returning the effects identified as active as well as the
 corresponding identified important factors.</p>
     </div>
     <div id="see-also">
@@ -116,42 +125,42 @@ corresponding identified important factors.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span>
-<span class="r-in"><span class="co"># GDS on main effects </span></span>
-<span class="r-in"><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataHamadaWu</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="op">-</span><span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">Y</span><span class="op">=</span> <span class="va">dataHamadaWu</span><span class="op">[</span>,<span class="fl">8</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="co"># GDS on main effects </span></span></span>
+<span class="r-in"><span><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># GDS on main effects and two-factor interactions</span></span>
-<span class="r-in"><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># GDS on main effects and two-factor interactions</span></span></span>
+<span class="r-in"><span><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6"    "V1:V5" "V6:V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V6" "V1" "V5" "V7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataCompoundExt</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="op">-</span><span class="fl">9</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">Y</span><span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="fl">9</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span>
-<span class="r-in"><span class="co"># GDS on main effects</span></span>
-<span class="r-in"><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">dataCompoundExt</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="op">-</span><span class="fl">9</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">Y</span><span class="op">=</span> <span class="va">dataCompoundExt</span><span class="op">[</span>,<span class="fl">9</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">delta.n</span><span class="op">=</span><span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="co"># GDS on main effects</span></span></span>
+<span class="r-in"><span><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V2" "V4" "V5" "V6"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V2" "V4" "V5" "V6"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># GDS on main effects and two-factor interactions</span></span>
-<span class="r-in"><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main2fi"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># GDS on main effects and two-factor interactions</span></span></span>
+<span class="r-in"><span><span class="fu">GDS_givencols</span><span class="op">(</span><span class="va">delta.n</span>,design <span class="op">=</span> <span class="va">X</span>, Y<span class="op">=</span><span class="va">Y</span>, which.cols <span class="op">=</span> <span class="st">"main2fi"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "V2"    "V4"    "V1:V4" "V1:V8" "V2:V5" "V7:V8"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -172,7 +181,7 @@ corresponding identified important factors.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -63,15 +63,15 @@ clusters and BIC to select such best model.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">StepI_chooseints</span><span class="op">(</span>
-  delta.n <span class="op">=</span> <span class="fl">10</span>,
-  <span class="va">nint</span>,
-  <span class="va">nrep</span>,
-  <span class="va">Xmain</span>,
-  <span class="va">Xint</span>,
-  <span class="va">Y</span>,
-  opt.heredity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">StepI_chooseints</span><span class="op">(</span></span>
+<span>  delta.n <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  <span class="va">nint</span>,</span>
+<span>  <span class="va">nrep</span>,</span>
+<span>  <span class="va">Xmain</span>,</span>
+<span>  <span class="va">Xint</span>,</span>
+<span>  <span class="va">Y</span>,</span>
+<span>  opt.heredity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -85,29 +85,44 @@ by aggregation over random models, 1--31. <a href="https://arxiv.org/abs/2205.13
 <dd><p>a positive integer suggesting the number of delta values
 to be tried. <code>delta.n</code> values of <code>delta</code> will be used
 strictly between 0 and <code>max(t(X)y)</code>. The default value is set to 10.</p></dd>
+
+
 <dt>nint</dt>
 <dd><p>a positive integer representing the number of randomly
 chosen interactions. The suggested value to use is the ceiling of 20%
 of the total number of interactions, that is, for <code>m</code> factors, we have
 <code>ceiling(0.2(m choose 2))</code>.</p></dd>
+
+
 <dt>nrep</dt>
 <dd><p>a positive integer representing the number of times GDS should
 be run. The suggested value is <code>(m choose 2)</code>.</p></dd>
+
+
 <dt>Xmain</dt>
 <dd><p>a \(n \times m\) matrix of <code>m</code> main effects.</p></dd>
+
+
 <dt>Xint</dt>
 <dd><p>a matrix of \({m \choose 2}\) two-factor
 interactions.</p></dd>
+
+
 <dt>Y</dt>
 <dd><p>a vector of <code>n</code> responses.</p></dd>
+
+
 <dt>opt.heredity</dt>
 <dd><p>a string with either <code>none</code>, or <code>weak</code>, or <code>strong</code>. Denotes
 whether the effect-heredity (weak or strong) should be embedded in GDS-ARM.
 The default value is <code>none</code> as suggested in Singh and Stufken (2022).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list containing the (a) matrix of the output of each GDS run with each
+    
+
+<p>A list containing the (a) matrix of the output of each GDS run with each
 row representing the selected effects from the corresponding GDS run, (b)
 a vector with the corresponding BIC values of each model.</p>
     </div>
@@ -124,7 +139,7 @@ a vector with the corresponding BIC values of each model.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -59,7 +59,7 @@ that <code>max(t(X)(y-X * beta))</code>&lt;= <code>delta</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dantzigS</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, <span class="va">delta</span>, scale.X <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dantzigS</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, <span class="va">delta</span>, scale.X <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -74,20 +74,31 @@ designs via the Dantzig selector. Journal of Statistical Planning and Inference
     <h2>Arguments</h2>
     <dl><dt>X</dt>
 <dd><p>a design matrix.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>a vector of  responses.</p></dd>
+
+
 <dt>delta</dt>
 <dd><p>the specific value of <code>delta</code> for which the Dantzig Selector
 optimization needs to be solved</p></dd>
+
+
 <dt>scale.X</dt>
 <dd><p>a number by which each column of <code>X</code> should be scaled</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list containing the (a) <code>opt</code> (Value of objective function
+    
+
+<p>A list containing the (a) <code>opt</code> (Value of objective function
 at optimum), (b) <code>status</code> (Numeric indicator: 0 = success,
 2 = no feasible solution), (c) <code>beta</code> (the estimated values
 of <code>beta</code>), (d) <code>delta</code></p>
+
+
     </div>
 
   </div>
@@ -102,7 +113,7 @@ of <code>beta</code>), (d) <code>delta</code></p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
