@@ -27,12 +27,9 @@ randomly selected interactions. Please see [Singh and Stufken (2022)](https://ar
 
 ## Development status
 
-This package is currently in the submission to CRAN. The programs are in stable development phase. Any major changes to include factors at more than two-levels will be added over time.
+This package is available in CRAN. The programs are in stable development phase. Any major changes to include factors at more than two-levels will be added over time.
 
 ## Installation
-
-(yet to come in the next week)
-Most stable version will be pushed to CRAN and can be installed directly from CRAN in a week's time:
 
 ```{r}
 install.packages("GDSARM")
