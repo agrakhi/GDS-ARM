@@ -1,7 +1,7 @@
 #' Step I: Multiple GDS runs with random interactions
 #'
-#' @description Runs Gauss Dantzig Selector (GDS) multiple times, each time 
-#' with a differently set of randomly selected two-factor interactions.
+#' @description Runs the Gauss Dantzig Selector (GDS) multiple times, each time 
+#' with a different set of randomly selected two-factor interactions.
 #' All \code{m} main effects are included in each GDS run. For each set of
 #' randomly selected interactions, the best GDS output is chosen among 
 #' \code{delta.n} values of \code{delta}. We use kmeans with 2 
@@ -9,8 +9,8 @@
 #'
 #'
 #' @param delta.n a positive integer suggesting the number of delta values
-#' to be tried. \code{delta.n} values of \code{delta} will be used 
-#' strictly between 0 and \code{max(t(X)y)}. The default value is set to 10.
+#' to be tried. \code{delta.n} equally spaced values of \code{delta} will be used 
+#' strictly between 0 and \code{max(|t(X)y|)}. The default value is set to 10.
 #' 
 #' @param nint a positive integer representing the number of randomly 
 #' chosen interactions. The suggested value to use is the ceiling of 20% 
@@ -36,7 +36,7 @@
 #' a vector with the corresponding BIC values of each model.
 #'
 #' @source Singh, R. and Stufken, J. (2022). Factor selection in screening experiments
-#' by aggregation over random models, 1--31. \url{https://arxiv.org/abs/2205.13497/}
+#' by aggregation over random models, 1--31. \doi{10.48550/arXiv.2205.13497}
 #' 
 #' @keywords internal
 #'
@@ -63,7 +63,7 @@ StepI_chooseints <- function(delta.n=10,nint,nrep,Xmain,Xint,Y, opt.heredity = c
     delta = seq(0, delta0, length.out = delta.n+2)
     delta = delta[-1]
 
-    beta = dantzig.delta(Xran, Y, delta, plot=F)
+    beta = dantzig.delta(Xran, Y, delta, plot=FALSE)
     beta2 = beta;
     beta2[]=0
 
@@ -109,7 +109,7 @@ StepI_chooseints <- function(delta.n=10,nint,nrep,Xmain,Xint,Y, opt.heredity = c
   } else {
     namesToUse = namesselectmain  
   }
-        datasubset = as.data.frame(cbind(Xran[,namesToUse,drop=F],Y))
+        datasubset = as.data.frame(cbind(Xran[,namesToUse,drop=FALSE],Y))
         colnames(datasubset) = c(namesToUse,"Y")
 		## fit a model to find BIC
         fit = stats::lm(Y~., data=datasubset)
@@ -119,7 +119,7 @@ StepI_chooseints <- function(delta.n=10,nint,nrep,Xmain,Xint,Y, opt.heredity = c
       }
     }
     Index_minBIC = which.min(BICafterkmeans)
-    SelectedEffectsFromThisRep = colnames(beta2[Index_minBIC,which(beta2[Index_minBIC,]==1),drop=F])
+    SelectedEffectsFromThisRep = colnames(beta2[Index_minBIC,which(beta2[Index_minBIC,]==1),drop=FALSE])
     if (length(SelectedEffectsFromThisRep)> 0) {
       B[irep,1:length(SelectedEffectsFromThisRep)]=SelectedEffectsFromThisRep
     }

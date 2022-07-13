@@ -5,7 +5,7 @@
 \title{Step I: Multiple GDS runs with random interactions}
 \source{
 Singh, R. and Stufken, J. (2022). Factor selection in screening experiments
-by aggregation over random models, 1--31. \url{https://arxiv.org/abs/2205.13497/}
+by aggregation over random models, 1--31. \doi{10.48550/arXiv.2205.13497}
 }
 \usage{
 StepI_chooseints(
@@ -20,8 +20,8 @@ StepI_chooseints(
 }
 \arguments{
 \item{delta.n}{a positive integer suggesting the number of delta values
-to be tried. \code{delta.n} values of \code{delta} will be used
-strictly between 0 and \code{max(t(X)y)}. The default value is set to 10.}
+to be tried. \code{delta.n} equally spaced values of \code{delta} will be used
+strictly between 0 and \code{max(|t(X)y|)}. The default value is set to 10.}
 
 \item{nint}{a positive integer representing the number of randomly
 chosen interactions. The suggested value to use is the ceiling of 20\%
@@ -48,8 +48,8 @@ row representing the selected effects from the corresponding GDS run, (b)
 a vector with the corresponding BIC values of each model.
 }
 \description{
-Runs Gauss Dantzig Selector (GDS) multiple times, each time
-with a differently set of randomly selected two-factor interactions.
+Runs the Gauss Dantzig Selector (GDS) multiple times, each time
+with a different set of randomly selected two-factor interactions.
 All \code{m} main effects are included in each GDS run. For each set of
 randomly selected interactions, the best GDS output is chosen among
 \code{delta.n} values of \code{delta}. We use kmeans with 2

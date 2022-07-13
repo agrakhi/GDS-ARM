@@ -5,7 +5,7 @@
 \title{Step III: Stepwise on the consolidated output from different GDS runs}
 \source{
 Singh, R. and Stufken, J. (2022). Factor selection in screening experiments
-by aggregation over random models, 1--31. \url{https://arxiv.org/abs/2205.13497/}
+by aggregation over random models, 1--31. \doi{10.48550/arXiv.2205.13497}
 }
 \usage{
 StepIII_stepwise(
@@ -32,10 +32,10 @@ interactions.}
 
 \item{Y}{a vector of \code{n} responses.}
 
-\item{cri.penter}{the p-value cutoff for an effect to enter into the
+\item{cri.penter}{the p-value cutoff for the most significant effect to enter into the
 stepwise regression model}
 
-\item{cri.premove}{the p-value cutoff for an effect to exit from the
+\item{cri.premove}{the p-value cutoff for the least significant effect to exit from the
 stepwise regression model}
 
 \item{opt.heredity}{a string with either \code{none}, or \code{weak}, or \code{strong}. Denotes
@@ -43,8 +43,8 @@ whether the effect-heredity (weak or strong) should be embedded in GDS-ARM.
 The default value is \code{none} as suggested in Singh and Stufken (2022).}
 }
 \value{
-A list returning the effects identified as active as well as the
-corresponding identified important factors.
+A list returning the selected effects as well as the
+corresponding important factors.
 }
 \description{
 Runs the stepwise regression on the output received from
